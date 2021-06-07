@@ -14,6 +14,7 @@ const game = {
     buttons: [],
     domLabels: [],
     container: document.querySelector('.main-block'),
+    tablePlayers: document.querySelector('.players'),
 
     //Array to pick a random color
     colors: ['yellow', 'blue', 'red', 'green'],
@@ -71,6 +72,9 @@ const game = {
                 this.domLabels[1].textContent = "Actual Score: 0"
                 this.container.classList.toggle('game-over')
                 this.playSound()
+
+                this.generateNewTableScore()
+                this.renderTable()
                 
                 setTimeout(() => {
                     this.container.classList.toggle('game-over')
@@ -148,6 +152,28 @@ const game = {
         this.sequence.length = 0
         this.isLive = false
         this.score = 0
+    },
+
+    tableData: [],
+
+    generateNewTableScore() {
+        let player = {
+            name: 'XXX',
+            score: this.score.toString(),
+            date: (new Date()).toDateString()
+        }
+        console.log(player)
+        this.tableData.push(player)
+    },
+
+    renderTable() {
+        let row = this.tableData[this.tableData.length - 1]
+        console.log(row)
+        let name = `<td>${row.name}</td>`
+        let score = `<td>${row.score}</td>`
+        let date = `<td>${row.date}</td>`
+        console.log(`<tr>${name}${score}${date}</tr>`)
+        this.tablePlayers.insertAdjacentHTML('beforeend', `<tr>${name}${score}${date}</tr>`)
     }
 }
 
