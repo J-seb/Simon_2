@@ -1,0 +1,283 @@
+:root {
+    --red-color: #fd151b;
+    --red-hover: #fd151de1;
+
+    --yellow-color: #ffb30f;
+    --yellow-hover: #ffb30fd7;
+
+    --blue-color: #0247a2;
+    --blue-hover: #0247a2c5;
+
+    --green-color: #0eab00;
+    --green-hover: #0eab00af;
+
+    --activate-color: rgb(85, 85, 85);
+
+    --background-color-primary: #212121;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Typography */
+
+h1, h2, h3, p{
+    margin: 0;
+    color: white;
+}
+
+h1, h3 {
+    font-family: 'Press Start 2P', cursive;
+}
+
+h2, p, table {
+    font-family: 'Play', sans-serif;;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+h1 {
+    padding: 5rem 2rem 1rem;
+    font-size: 3rem;
+}
+
+h2 {
+    padding: 3rem 1rem 1rem ;
+    font-size: 2.5rem;
+}
+
+h3 {
+    padding: 2rem;
+    font-size: 2rem;
+}
+
+p {
+    padding: 1rem 1rem 3rem;
+    font-size: 1.8rem;
+}
+
+table {
+    font-size: 1.3rems;
+}
+
+@media screen and (min-width: 768px) {
+    h1 {
+        padding: 7rem 2rem 2rem;
+        font-size: 3.5rem;
+    }
+    
+    h2 {
+        padding: 5rem 1rem 2rem ;
+        font-size: 3rem;
+    }
+    
+    h3 {
+        padding: 3rem;
+        font-size: 2.5rem;
+    }
+    
+    p, table {
+        padding: 2rem 1rem 3rem;
+        font-size: 2.3rem;
+    }
+
+    table {
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    h1 {
+        padding: 9rem 2rem 3rem;
+        font-size: 5rem;
+    }
+    
+    h2 {
+        padding: 7rem 1rem 3rem ;
+        font-size: 4rem;
+    }
+    
+    h3 {
+        padding: 4rem;
+        font-size: 3.5rem;
+    }
+    
+    p {
+        padding: 3rem 1rem 4rem;
+        font-size: 3.2rem;
+    }
+
+    table {
+        font-size: 2rem;
+    }
+}
+
+/* Buttons */
+
+.external-border {
+    cursor: pointer;
+    height: 150px;
+    width: 150px;
+    border-radius: 20px;
+    border: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 20px 5px rgba(255, 255, 255, 0.1);
+    outline: none;
+    background-color: var(--activate-color);
+}
+
+.internal-border {
+    height: 140px;
+    width: 140px;
+    border-radius: 15px;
+    border: 2px solid black;
+    outline: none;
+    
+}
+
+.external-border.yellow {
+    background-color: var(--yellow-color);
+}
+
+.external-border.blue {
+    background-color: var(--blue-color);
+}
+
+.external-border.red {
+    background-color: var(--red-color);
+}
+
+.external-border.green {
+    background-color: var(--green-color);
+}
+
+.yellow, .blue, .red, .green {
+    transition: background-color 0.2s;
+}
+
+@media screen and (min-width: 768px) {
+    .external-border {
+        height: 200px;
+        width: 200px;
+    }
+    
+    .internal-border {
+        height: 188px;
+        width: 188px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .external-border {
+        height: 300px;
+        width: 300px;
+    }
+    
+    .internal-border {
+        height: 280px;
+        width: 280px;
+    }
+}
+
+.external-border.yellow:hover {
+    background-color: var(--yellow-hover);
+}
+
+.external-border.blue:hover {
+    background-color: var(--blue-hover);
+}
+
+.external-border.red:hover {
+    background-color: var(--red-hover);
+}
+
+.external-border.green:hover {
+    background-color: var(--green-hover);
+}
+
+/* Main */
+
+.main-block {
+    background-color: var(--background-color-primary);
+    clip-path: polygon(100% 0%, 100% 90%, 50% 100%, 0% 90%, 0 0);
+    height: 75vh;
+}
+
+.container {
+    max-width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.button-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+span {
+    cursor: pointer;
+}
+
+.game-over {
+    background-color: red;
+}
+
+span:hover {
+    box-shadow: 0px 0px 20px 5px rgba(255, 255, 255, 0.1);
+}
+
+@media screen and (min-width: 768px) {
+    .main-block {
+        height: 95vh;
+    }
+    .button-group {
+        gap: 2rem;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .main-block {
+        height: 200vh;
+    }
+    .button-group {
+        gap: 4rem;
+    }
+}
+
+/* Table */
+
+.table-header {
+    color: var(--background-color-primary);
+}
+
+.table {
+    border-collapse: collapse;
+    margin: 2rem auto;
+    width: 100%;
+}
+
+tr {
+    border-bottom: 1px solid rgba(95, 95, 95, 0.596);
+}
+
+td {
+    padding: 0.5rem;
+}
+
+footer {
+    padding-bottom: 2rem;
+}
+
+@media screen and (min-width: 1280px) {
+    footer {
+        padding-bottom: 6rem;
+    }
+}
