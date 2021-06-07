@@ -15,6 +15,10 @@ const game = {
     domLabels: [],
     container: document.querySelector('.main-block'),
     tablePlayers: document.querySelector('.players'),
+    modal: document.querySelector('.modal-container'),
+    input:document.querySelector('.nick'),
+    submitForm: document.querySelector('.submit'),
+    namePlayer: '',
 
     //Array to pick a random color
     colors: ['yellow', 'blue', 'red', 'green'],
@@ -73,15 +77,7 @@ const game = {
                 this.container.classList.toggle('game-over')
                 this.playSound()
 
-                this.generateNewTableScore()
-                this.renderTable()
-                
-                setTimeout(() => {
-                    this.container.classList.toggle('game-over')
-                    this.domLabels[0].textContent = "Start"
-                    this.startOver()
-                  }, 1000);
-                
+                this.openModal()
             }
         }
     },
@@ -157,10 +153,12 @@ const game = {
     tableData: [],
 
     generateNewTableScore() {
+        let time = new Date().getTime()
+        
         let player = {
-            name: 'XXX',
+            name: this.namePlayer,
             score: this.score.toString(),
-            date: (new Date()).toDateString()
+            date: moment(time).format('DD/MM/YYYY hh:mm a')
         }
         console.log(player)
         this.tableData.push(player)
@@ -174,10 +172,38 @@ const game = {
         let date = `<td>${row.date}</td>`
         console.log(`<tr>${name}${score}${date}</tr>`)
         this.tablePlayers.insertAdjacentHTML('beforeend', `<tr>${name}${score}${date}</tr>`)
+    },
+
+    openModal() {
+        this.modal.style.display = "block"
+    },
+
+    closeModal() {
+        this.modal.style.display = "none"
+    },
+
+    enableForm() {
+        this.submitForm.addEventListener("click", (e) => {
+            e.preventDefault()
+            this.namePlayer = this.input.value
+            this.input.value = ''
+
+            this.closeModal()
+
+            this.generateNewTableScore()
+            this.renderTable()
+                
+            setTimeout(() => {
+                this.container.classList.toggle('game-over')
+                this.domLabels[0].textContent = "Start"
+                this.startOver()
+            }, 1000);
+        })
     }
 }
 
 game.getDomButtons()
 game.getDomLabels()
+game.enableForm()
 game.enableButtons()
 game.launchGame()
